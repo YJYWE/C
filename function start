@@ -1,0 +1,121 @@
+//函数声明
+
+#include <stdio.h>
+void Add(int*);
+
+int main()
+{
+    int num=0;
+    Add(&num);
+    printf("num=%d\n",num);//1
+    Add(&num);
+    printf("num=%d\n",num);//2
+    Add(&num);
+    printf("num=%d\n",num);//3
+    return 0;
+}
+
+void Add(int* p)
+{
+    (*p)++;
+}
+
+----------------------------------------------------------------
+
+//判断一个数是不是素数
+#include <stdio.h>
+#include <math.h>
+
+int judge(int x)
+{
+    int i=sqrt(x);
+    int a=2;
+    for (a=2; a<=i; a++) {
+    
+        if (x%a==0) {
+            return 0;
+        }
+    }
+        return 1;
+}
+   
+void main()
+{
+    int a=0;
+    printf("Input a number: ");
+    scanf("%d",&a);
+    
+    judge(a);
+    if (judge(a)) {
+        printf("The number is a prime number.\n");
+    }
+    else
+    {
+        printf("no\n");
+    }
+}
+
+----------------------------------------------------------------
+
+//二分查找
+//在一个有序数组中查找具体的某个数
+
+#include <stdio.h>
+
+int find(int x,int a[],int n)
+{
+    int r=0, l=n-1,m=r+(l-r)/2;
+    while (1) {
+        if (x==a[m] ) {
+            return m;
+        }
+        if (x<a[m]) {
+            l=m-1;
+        }
+        if(x>a[m])
+        {
+            r=m+1;
+        }
+        m=r+(l-r)/2;
+        if (l<r) {
+            return -1;
+        }
+    }
+}
+void main()
+{
+    int arr[]={1,2,3,4,5,6,7,8,9,10};
+    int key=17;
+    int n=(sizeof(arr))/(sizeof(arr[0]));
+    if(find(key,arr,n)!=-1)
+    {
+        printf("The number is: arr[%d]\n",find(key,arr,n));
+    }
+    else
+    {
+        printf("Not include.\n");
+    }
+}
+
+----------------------------------------------------------------
+
+//每调用一次这个函数，就会将num的值增加1
+
+#include <stdio.h>
+
+void Add(int* p)
+{
+    (*p)++;
+}
+
+int main()
+{
+    int num=0;
+    Add(&num);
+    printf("num=%d\n",num);//1
+    Add(&num);
+    printf("num=%d\n",num);//2
+    Add(&num);
+    printf("num=%d\n",num);//3
+    return 0;
+}
