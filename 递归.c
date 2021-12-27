@@ -132,3 +132,29 @@ int main()
 
     return 0;
 }
+
+-------------------------------------------------
+    
+//递归 输入一个非负整数，返回组成它的数字之和
+//eg: 1729 1+7+2+9=19
+#include <stdio.h>
+
+int DigitSum(int n)
+{
+    if (n>9) {
+        return DigitSum(n/10)+n%10;
+    }
+    else
+    {
+        return n;
+    }
+}
+
+int main()
+{
+    int n=0;
+    scanf("%d", &n);
+    int sum=DigitSum(n);
+    printf("sum=%d\n",sum);
+    return 0;
+}
