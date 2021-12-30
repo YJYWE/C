@@ -35,3 +35,31 @@ int main()
     }
     return 0;
 }
+
+----------------------------------------
+
+#include <stdio.h>
+#include <assert.h>
+
+void my_strcpy(char* dest, const char* src)
+//const放在指针变量的*左边时，修饰的是*p，就是说：不能通过指针p来改变*p的值，但可改变指针p指向的地址
+//const放在指针变量的右边，修饰的是指针变量p本身，指针p不能被改变（地址不能变），*p可变
+{
+    //断言：判断为真，什么都不发生；判断为假，报告错误发生地
+    assert(dest !=NULL);//断言
+    assert(src !=NULL);//断言
+    
+    while (*dest++=*src++) {
+        ;
+    }
+}
+int main()
+{
+    //strcpy
+    //字符串拷贝
+    char arr1[]="#########";
+    char arr2[]="bit";
+    my_strcpy(arr1, arr2);
+    printf("%s\n",arr1);
+    return 0;
+}
